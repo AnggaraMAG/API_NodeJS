@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router()
+const { auth } = require("../middleware/authh");
 // const TodoController = require("../controllers/todos")
 const { login, register } = require("../controllers/auth");
 const { index, add } = require("../controllers/species");
 const { Getpet, Postpet, Putpet, Deletepet, Petfind } = require("../controllers/pet");
+const { Userdetail, Userupdate, Userdelete } = require("../controllers/user");
 
 router.get("/", (req, res) => {
     res.send("<strong>Hello DumbWays Rumah Tengah</strong>");
@@ -20,10 +22,18 @@ router.post('/species', add);
 
 //PET
 router.get('/pets', Getpet);
-router.get('/pet/:id', Petfind);
-router.post('/pet', Postpet);
-router.put('/pet/:id', Putpet);
-router.delete('/pet/:id', Deletepet);
+router.get('/pet/:id', auth, Petfind);
+router.post('/pet', auth, Postpet);
+router.put('/pet/:id', auth, Putpet);
+//detail PET
+router.delete('/pet/:id', auth, Deletepet);
+
+//Users API Detail
+router.get('/user/:id', Userdetail);
+router.put('/user/:id', Userupdate);
+router.delete('/user/:id', Userdelete);
+
+
 
 
 module.exports = router;
