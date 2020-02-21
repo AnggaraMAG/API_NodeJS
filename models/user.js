@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING
   }, {});
   user.associate = function (models) {
-    // associations can be defined here
+    user.hasMany(models.pet, { foreignKey: "user_id" })
   };
   return user;
 };

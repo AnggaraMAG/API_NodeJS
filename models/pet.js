@@ -10,7 +10,19 @@ module.exports = (sequelize, DataTypes) => {
     photo: DataTypes.STRING
   }, {});
   pet.associate = function (models) {
-    // associations can be defined here
+    pet.belongsTo(models.user, {
+      foreignKey: "user_id",
+      as: "user"
+
+    });
+    pet.belongsTo(models.species, {
+      foreignKey: "species_id",
+      as: "species"
+    });
+    pet.belongsTo(models.age, {
+      foreignKey: "age_id",
+      as: "ages"
+    });
   };
   return pet;
 };

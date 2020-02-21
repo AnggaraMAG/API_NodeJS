@@ -43,7 +43,7 @@ exports.register = async (req, res) => {
                 species_id: pet.species.id,
                 age_id: pet.age.id
             });
-            const token = jwt.sign({ user_id: user.id }, process.env.SECRET_KEY);
+            const token = jwt.sign({ user_id: user_id.id }, process.env.SECRET_KEY);
             res.send(({ email, token }))
         }
     } catch (error) {
