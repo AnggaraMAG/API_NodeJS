@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     pet.belongsTo(models.user, {
       foreignKey: "user_id",
       as: "user"
-
     });
     pet.belongsTo(models.species, {
       foreignKey: "species_id",
@@ -23,6 +22,17 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "age_id",
       as: "ages"
     });
+    pet.belongsToMany(pet, {
+      through: models.match,
+      as: "pet_id",
+      foreignKey: "pet_id"
+    });
+    pet.belongsToMany(pet, {
+      through: models.match,
+      as: "pet_id_liked",
+      foreignKey: "pet_id_liked"
+    });
   };
+
   return pet;
 };
