@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   species.associate = function (models) {
-    species.hasOne(models.pet, { foreignKey: "species_id" })
+    species.hasOne(models.pet, { foreignKey: "speciesId" })
   };
   return species;
 };
