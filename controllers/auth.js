@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const models = require('../models')
 const User = models.user
 const Pet = models.pet;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 exports.login = async (req, res) => {
     try {
@@ -21,6 +23,8 @@ exports.login = async (req, res) => {
 exports.register = async (req, res) => {
     try {
         const { name, email, password, phone, address, pet } = req.body;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hash = await bcrypt.hash(password, salt);
 
         const check = await User.findOne({ where: { email } });
         if (check) {
@@ -32,7 +36,7 @@ exports.register = async (req, res) => {
                 name,
                 role: "user",
                 email,
-                password,
+                password: hash,
                 phone,
                 address
             });
