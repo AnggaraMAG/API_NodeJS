@@ -20,7 +20,7 @@ exports.Getpet = async (req, res) => {
             // attributes: { exclude: ["user_id", "species_id"] }
 
         });
-        res.send(pet)
+        res.send({ pet })
         console.log(pet)
     } catch (error) {
         console.log(error)

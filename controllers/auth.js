@@ -30,6 +30,7 @@ exports.register = async (req, res) => {
         } else {
             const userRes = await User.create({
                 name,
+                role: "user",
                 email,
                 password,
                 phone,

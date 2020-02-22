@@ -17,7 +17,7 @@ exports.GetM = async (req, res) => {
             });
             res.status(200).send(data);
         } else {
-            res.send("noooooo");
+            res.send("tidak match");
         }
     } catch (err) { }
 };

@@ -31,14 +31,13 @@ router.put('/pet/:id', auth, Putpet);
 router.delete('/pet/:id', auth, Deletepet);
 
 //Users API Detail
-router.get('/user/:id', Userdetail);
+router.get('/user/:id', auth, Userdetail);
 router.put('/user/:id', auth, Userupdate);
 router.delete('/user/:id', auth, Userdelete);
 
 //Payment
 router.post("/payment", auth, Upay);
-router.post("/payment/:id", auth, Uupdate);
-
+router.put("/payment/:id", auth, Uupdate);
 
 //Match
 router.get('/match', GetM);

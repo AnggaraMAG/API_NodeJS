@@ -4,7 +4,7 @@ const Species = models.species
 exports.index = async (req, res) => {
     try {
         const species = await Species.findAll();
-        res.send(species)
+        res.send({data:species})
     } catch (error) {
         console.log(error)
     }
