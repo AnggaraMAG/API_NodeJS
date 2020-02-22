@@ -8,12 +8,18 @@ const saltRounds = 10;
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ where: { email, password } })
+        const user = await User.findOne({ where: { email } })
         if (user) {
-            const token = jwt.sign({ user_id: user.id }, process.env.SECRET_KEY)
-            res.send({ email, token })
+            const result = await bcrypt.compare(password, user.password);
+            if (result) {
+                const token = jwt.sign({ user_id: user.id }, process.env.SECRET_KEY);
+                res.send({ email, token });
+
+            } else {
+                res.status(401).send({ status: false, message: "password wrong" });
+            }
         } else {
-            res.status(401).send({ message: "invalid login" })
+            res.status(401).send({ status: false, message: "email not available" });
         }
     } catch (error) {
         console.log(error)
