@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM('premium', 'free')
       },
       user_id: {
         type: Sequelize.STRING

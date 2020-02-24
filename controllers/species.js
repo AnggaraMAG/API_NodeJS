@@ -4,7 +4,7 @@ const Species = models.species
 exports.index = async (req, res) => {
     try {
         const species = await Species.findAll();
-        res.send({data:species})
+        res.send({ data: species })
     } catch (error) {
         console.log(error)
     }
@@ -19,13 +19,13 @@ exports.add = async (req, res) => {
     if (check) {
         res.status(401).send({
             status: false,
-            message: "nama species sudah ada"
+            message: "species exist"
         })
     } else {
         const species = await Species.create(req.body);
         res.status(201).send({
             status: true,
-            message: "succes menambahkan hewan ", data: species
+            message: "succes  ", data: species
         });
     }
     try {

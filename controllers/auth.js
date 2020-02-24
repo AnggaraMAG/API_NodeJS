@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
         if (check) {
             res
                 .status(401)
-                .send({ status: false, message: "email sudah terpakai" });
+                .send({ status: false, message: "Email Already Taken" });
         } else {
             const userRes = await User.create({
                 name,

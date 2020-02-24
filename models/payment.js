@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const payment = sequelize.define('payment', {
     no_rek: DataTypes.STRING,
     proof_of_transfer: DataTypes.STRING,
-    status: DataTypes.STRING,
+    status: DataTypes.ENUM('premium', 'free'),
     user_id: DataTypes.STRING
   }, {});
   payment.associate = function (models) {
