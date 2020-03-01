@@ -8,6 +8,7 @@ const { Getpet, Postpet, Putpet, Deletepet, Petfind } = require("../controllers/
 const { Userdetail, Userupdate, Userdelete } = require("../controllers/user");
 const { GetM, CreateM, UpdateM } = require('../controllers/match');
 const { Upay, Uupdate } = require('../controllers/payment');
+const { getPet } = require("../controllers/ages");
 
 // router.get("/", (req, res) => {
 //     res.send("<strong>Hello DumbWays Rumah Tengah</strong>");
@@ -31,13 +32,16 @@ router.put('/pet/:id', auth, Putpet);
 router.delete('/pet/:id', auth, Deletepet);
 
 //Users API Detail
-router.get('/user/:id', auth, Userdetail);
+router.get('/user', auth, Userdetail);
 router.put('/user/:id', auth, Userupdate);
 router.delete('/user/:id', auth, Userdelete);
 
 //Payment
 router.post("/payment", auth, Upay);
 router.put("/payment/:id", auth, Uupdate);
+
+//ages
+router.get("/ages", getPet);
 
 //Match
 router.get('/match', GetM);

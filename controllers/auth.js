@@ -51,8 +51,8 @@ exports.register = async (req, res) => {
                 name: pet.name,
                 gender: pet.gender,
                 user_id,
-                species_id: pet.species.id,
-                age_id: pet.age.id
+                species_id: pet.species,
+                age_id: pet.age
             });
             const token = jwt.sign({ user_id: user_id.id }, process.env.SECRET_KEY);
             res.send(({ email, token }))

@@ -131,7 +131,7 @@ exports.Putpet = async (req, res) => {
                 attributes: ["id", "name"]
             }
             ],
-            attributes: { exclude: ["user_id", "species_id"] }
+            attributes: { exclude: ["user_id", "species_id", "createdAt", "updatedAt"] }
         });
         res.status(200).send({
             status: true,
