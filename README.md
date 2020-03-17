@@ -33,7 +33,7 @@ Make sure all of these are properly installed in your system.
 First, clone this repository into your system.
 
 ```
-git clone https://github.com/AnggaraMAG/Breednder_AnggaraMAG_DW14IIAIQ.git
+git clone https://github.com/AnggaraMAG/API_NodeJS
 ```
 
 Then, install all the packages that described in `package.json` of both `client` and `server` directories.
